@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface HoverState {
-  ref: any;
+  hoveredType: "square" | "circle" | "default" | undefined;
   width: number | undefined;
   height: number | undefined;
   top: number | undefined;
@@ -9,7 +9,7 @@ interface HoverState {
 }
 
 const initialState: HoverState = {
-  ref: null,
+  hoveredType: undefined,
   width: 0,
   height: 0,
   top: 0,
@@ -20,11 +20,21 @@ const hoverSlice = createSlice({
   name: "hover",
   initialState,
   reducers: {
-    isHovered: (
+    squareHovered: (
       state: HoverState,
-      action: PayloadAction<HTMLElement | null>,
+      action: PayloadAction<HTMLElement | SVGSVGElement | null>,
     ) => {
-      state.ref = action.payload;
+      state.hoveredType = action.payload ? "square" : undefined;
+      state.height = action.payload?.clientHeight;
+      state.width = action.payload?.clientWidth;
+      state.top = action.payload?.getBoundingClientRect().top;
+      state.left = action.payload?.getBoundingClientRect().left;
+    },
+    circleHovered: (
+      state: HoverState,
+      action: PayloadAction<HTMLElement | SVGSVGElement | null>,
+    ) => {
+      state.hoveredType = action.payload ? "circle" : undefined;
       state.height = action.payload?.clientHeight;
       state.width = action.payload?.clientWidth;
       state.top = action.payload?.getBoundingClientRect().top;
@@ -33,5 +43,5 @@ const hoverSlice = createSlice({
   },
 });
 
-export const { isHovered } = hoverSlice.actions;
+export const { squareHovered, circleHovered } = hoverSlice.actions;
 export default hoverSlice.reducer;

@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-zinc-900`}>
+      <body className={`${inter.className} h-max bg-zinc-900`}>
         <HoverProvider>{children}</HoverProvider>
       </body>
     </html>

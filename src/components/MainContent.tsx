@@ -1,9 +1,9 @@
-import { AnimatePresence } from 'framer-motion';
+import Intro from "./Intro";
 
 export default function MainContent() {
   return (
-    <AnimatePresence>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
-    </AnimatePresence>
+    <main className="flex flex-col items-center justify-center">
+      <Intro />
+    </main>
   );
 }

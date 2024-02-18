@@ -5,6 +5,13 @@ export const store = configureStore({
   reducer: {
     hoverReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        // Ignore these action types
+        ignoredActions: ["hover/squareHovered", "hover/circleHovered"],
+      },
+    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

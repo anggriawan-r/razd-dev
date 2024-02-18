@@ -40,7 +40,7 @@ const Items = {
 
 export default function Preloader({ setShowPreloader }: PreloaderType) {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black">
+    <div className="flex min-h-screen items-center justify-center bg-zinc-900">
       <motion.div
         className="flex w-full items-center justify-center gap-4"
         variants={Container}

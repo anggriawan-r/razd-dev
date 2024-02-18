@@ -5,7 +5,7 @@ import { RootState } from "@/store/store";
 
 export default function Cursor() {
   const [mouse, _] = useMouse();
-  const navHover = useSelector((state: RootState) => state.hoverReducer);
+  const hover = useSelector((state: RootState) => state.hoverReducer);
 
   const cursorVariants: Variants = {
     default: {
@@ -15,23 +15,43 @@ export default function Cursor() {
       borderRadius: "100px",
       transition: { type: "spring", damping: 28, stiffness: 500 },
     },
-    nav: {
-      x: navHover.left,
-      y: navHover.top,
-      height: navHover.height,
-      width: navHover.width,
+    square: {
+      x: hover.left,
+      y: hover.top,
+      height: hover.height,
+      width: hover.width,
       mixBlendMode: "difference",
       borderRadius: "6px",
       transition: { type: "spring", damping: 32, stiffness: 500 },
     },
+    circle: {
+      x: hover.left! - 2,
+      y: hover.top! - 2,
+      height: hover.height! + 4,
+      width: hover.width! + 4,
+      borderRadius: "50%",
+      mixBlendMode: "difference",
+      transition: { type: "spring", damping: 32, stiffness: 500 },
+    },
+  };
+
+  const variantsSwitch = (variants: any) => {
+    switch (variants) {
+      case "square":
+        return "square";
+      case "circle":
+        return "circle";
+      default:
+        return "default";
+    }
   };
 
   return (
     <AnimatePresence>
       <motion.div
-        className="pointer-events-none fixed z-[999] h-8 w-8 bg-white bg-blend-difference"
+        className="pointer-events-none fixed z-[999] hidden h-8 w-8 bg-white bg-blend-difference sm:block"
         variants={cursorVariants}
-        animate={navHover.ref ? "nav" : "default"}
+        animate={variantsSwitch(hover.hoveredType)}
       ></motion.div>
     </AnimatePresence>
   );
