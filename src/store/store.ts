@@ -9,7 +9,11 @@ export const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: {
         // Ignore these action types
-        ignoredActions: ["hover/squareHovered", "hover/circleHovered"],
+        ignoredActions: [
+          "hover/squareHovered",
+          "hover/circleHovered",
+          "hover/navHovered",
+        ],
       },
     }),
 });

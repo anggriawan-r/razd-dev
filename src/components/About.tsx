@@ -76,7 +76,7 @@ function About() {
             </a>
           </div>
         </div>
-        <div className="relative h-72 w-full overflow-hidden rounded-lg bg-zinc-200 sm:w-1/2">
+        <div className="relative -z-10 h-72 w-full overflow-hidden rounded-lg bg-zinc-200 sm:w-1/2">
           <Image
             src="/profile.jpg"
             alt="my photo profile"
