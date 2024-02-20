@@ -2,14 +2,14 @@ import Link from "next/link";
 import { links } from "@/lib/data";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store/store";
-import { squareHovered } from "@/store/hover/hoverSlice";
+import { navHovered } from "@/store/hover/hoverSlice";
 import { motion } from "framer-motion";
 
 export default function Header() {
   const dispatch = useDispatch<AppDispatch>();
 
   return (
-    <header className="z-50 flex justify-center">
+    <header className="z-[100] flex justify-center">
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -22,8 +22,8 @@ export default function Header() {
               <li
                 key={link.hash}
                 className="flex h-full items-center justify-center rounded-sm"
-                onMouseEnter={(e) => dispatch(squareHovered(e.currentTarget))}
-                onMouseLeave={() => dispatch(squareHovered(null))}
+                onMouseEnter={(e) => dispatch(navHovered(e.currentTarget))}
+                onMouseLeave={() => dispatch(navHovered(null))}
               >
                 <Link
                   href={link.hash}

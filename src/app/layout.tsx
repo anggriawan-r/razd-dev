@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import { HoverProvider } from "@/store/Provider";
+import Cursor from "@/components/Cursor";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,14 +14,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} h-max bg-zinc-900`}>
-        <HoverProvider>{children}</HoverProvider>
-      </body>
+    <html lang="en" className="!scroll-smooth">
+      <HoverProvider>
+        <body className={`${inter.className} h-max bg-zinc-900`}>
+          <Cursor />
+          {children}
+        </body>
+      </HoverProvider>
     </html>
   );
 }

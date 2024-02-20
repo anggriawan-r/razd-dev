@@ -1,6 +1,5 @@
 "use client";
 
-import Cursor from "@/components/Cursor";
 import Header from "@/components/Header";
 import MainContent from "@/components/MainContent";
 import Preloader from "@/components/Preloader";
@@ -12,16 +11,13 @@ export default function Home() {
 
   return (
     <>
-      <Cursor />
-
       <AnimatePresence mode="wait">
-        {showPreloader && (
+        {showPreloader ? (
           <Preloader key="first" setShowPreloader={setShowPreloader} />
-        )}
-        {!showPreloader && (
+        ) : (
           <>
-            <Header />
-            <MainContent key="second" />
+            <Header key="second" />
+            <MainContent key="third" />
           </>
         )}
       </AnimatePresence>

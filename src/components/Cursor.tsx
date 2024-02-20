@@ -1,25 +1,41 @@
+"use client";
+
 import { AnimatePresence, Variants, motion } from "framer-motion";
-import { useMouse } from "@uidotdev/usehooks";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
+import { useEffect, useState } from "react";
 
 export default function Cursor() {
-  const [mouse, _] = useMouse();
   const hover = useSelector((state: RootState) => state.hoverReducer);
+  const [x, setX] = useState<number>(0);
+  const [y, setY] = useState<number>(0);
+
+  const manageMouseMove = (e: MouseEvent) => {
+    const { clientX, clientY } = e;
+    setX(clientX - 16);
+    setY(clientY - 16);
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", manageMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", manageMouseMove);
+    };
+  });
 
   const cursorVariants: Variants = {
     default: {
-      x: mouse.x - 16,
-      y: mouse.y - 16,
+      x: x,
+      y: y,
       mixBlendMode: "difference",
-      borderRadius: "100px",
+      borderRadius: "50%",
       transition: { type: "spring", damping: 28, stiffness: 500 },
     },
     square: {
-      x: hover.left,
-      y: hover.top,
-      height: hover.height,
-      width: hover.width,
+      x: hover.left! - 2,
+      y: hover.top! - 2,
+      height: hover.height! + 8,
+      width: hover.width! + 8,
       mixBlendMode: "difference",
       borderRadius: "6px",
       transition: { type: "spring", damping: 32, stiffness: 500 },
@@ -33,6 +49,15 @@ export default function Cursor() {
       mixBlendMode: "difference",
       transition: { type: "spring", damping: 32, stiffness: 500 },
     },
+    nav: {
+      x: hover.left,
+      y: hover.top,
+      height: hover.height!,
+      width: hover.width!,
+      mixBlendMode: "difference",
+      borderRadius: "6px",
+      transition: { type: "spring", damping: 32, stiffness: 500 },
+    },
   };
 
   const variantsSwitch = (variants: any) => {
@@ -41,6 +66,8 @@ export default function Cursor() {
         return "square";
       case "circle":
         return "circle";
+      case "nav":
+        return "nav";
       default:
         return "default";
     }

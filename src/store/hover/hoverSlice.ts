@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface HoverState {
-  hoveredType: "square" | "circle" | "default" | undefined;
+  hoveredType: "square" | "circle" | "nav" | "default" | undefined;
   width: number | undefined;
   height: number | undefined;
   top: number | undefined;
@@ -40,8 +40,18 @@ const hoverSlice = createSlice({
       state.top = action.payload?.getBoundingClientRect().top;
       state.left = action.payload?.getBoundingClientRect().left;
     },
+    navHovered: (
+      state: HoverState,
+      action: PayloadAction<HTMLElement | SVGSVGElement | null>,
+    ) => {
+      state.hoveredType = action.payload ? "nav" : undefined;
+      state.height = action.payload?.clientHeight;
+      state.width = action.payload?.clientWidth;
+      state.top = action.payload?.getBoundingClientRect().top;
+      state.left = action.payload?.getBoundingClientRect().left;
+    },
   },
 });
 
-export const { squareHovered, circleHovered } = hoverSlice.actions;
+export const { squareHovered, circleHovered, navHovered } = hoverSlice.actions;
 export default hoverSlice.reducer;
