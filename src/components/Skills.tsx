@@ -1,17 +1,17 @@
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store/store";
-import Link from "next/link";
 import { skills } from "@/lib/data";
 import { Button } from "./ui/button";
-import Image from "next/image";
 import { squareHovered } from "@/store/hover/hoverSlice";
+import Link from "next/link";
+import Image from "next/image";
 
 function Skills() {
   const dispatch = useDispatch<AppDispatch>();
   const skillsSorted = skills.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <div
+    <section
       id="skills"
       className="container flex h-screen max-w-screen-lg flex-col items-center justify-center gap-16 px-4"
     >
@@ -29,7 +29,7 @@ function Skills() {
             onMouseEnter={(e) => dispatch(squareHovered(e.currentTarget))}
             onMouseLeave={() => dispatch(squareHovered(null))}
           >
-            <Link href="">
+            <Link href={skill.link} target="_blank">
               <Image
                 src={skill.image}
                 alt={skill.name}
@@ -43,7 +43,7 @@ function Skills() {
           </Button>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

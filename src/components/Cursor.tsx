@@ -32,8 +32,8 @@ export default function Cursor() {
       transition: { type: "spring", damping: 28, stiffness: 500 },
     },
     square: {
-      x: hover.left! - 2,
-      y: hover.top! - 2,
+      x: hover.left! - 3,
+      y: hover.top! - 3,
       height: hover.height! + 8,
       width: hover.width! + 8,
       mixBlendMode: "difference",

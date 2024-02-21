@@ -1,4 +1,5 @@
 import About from "./About";
+import Contact from "./Contact";
 import Intro from "./Intro";
 import Projects from "./Projects";
 import Skills from "./Skills";
@@ -10,6 +11,7 @@ export default function MainContent() {
       <About />
       <Skills />
       <Projects />
+      <Contact />
     </main>
   );
 }

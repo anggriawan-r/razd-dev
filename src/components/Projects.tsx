@@ -12,26 +12,28 @@ function Projects() {
   const dispatch = useDispatch<AppDispatch>();
 
   return (
-    <div
+    <section
       id="projects"
-      className="container flex min-h-screen max-w-screen-lg scroll-m-8 flex-col items-center justify-center gap-16 px-4"
+      className="container flex min-h-screen max-w-screen-lg flex-col items-center justify-center gap-16 px-4 sm:scroll-m-8"
     >
       <h1 className="text-3xl font-extrabold text-zinc-200 md:text-7xl">
         PROJECTS
       </h1>
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
         {projects.map((project) => (
           <div
             key={project.title}
             className="flex h-auto w-full flex-col items-center justify-center gap-6"
           >
-            <Image
-              src={project.image}
-              alt={project.title}
-              width={1200}
-              height={600}
-              className="w-full rounded-md object-cover"
-            />
+            <div className="overflow-hidden rounded-md">
+              <Image
+                src={project.image}
+                alt={project.title}
+                width={1200}
+                height={600}
+                className="w-full rounded-md object-cover transition duration-500 ease-out hover:scale-110"
+              />
+            </div>
             <div className="flex w-full items-center justify-between">
               <h2 className="text-3xl font-bold text-zinc-200">Blogin</h2>
               <div className="flex gap-2">
@@ -81,7 +83,7 @@ function Projects() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

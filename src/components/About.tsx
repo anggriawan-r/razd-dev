@@ -11,7 +11,7 @@ function About() {
   const dispatch = useDispatch<AppDispatch>();
 
   return (
-    <div
+    <section
       id="about"
       className="container flex h-screen max-w-screen-lg flex-col items-center justify-center gap-16 px-4"
     >
@@ -85,7 +85,7 @@ function About() {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
