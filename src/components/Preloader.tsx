@@ -25,12 +25,12 @@ const Items = {
     opacity: 0,
   },
   animate: {
-    opacity: 100,
     y: 0,
+    opacity: 100,
   },
   exit: {
-    opacity: 0,
     y: 25,
+    opacity: 0,
   },
 };
 
