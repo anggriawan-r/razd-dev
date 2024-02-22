@@ -7,14 +7,14 @@ type PreloaderType = {
 const loaderText = ["Eat.", "Sleep.", "Code."];
 
 const Container = {
-  animate: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
   initial: {
     transition: {
       delayChildren: 0.75,
+    },
+  },
+  animate: {
+    transition: {
+      staggerChildren: 0.2,
     },
   },
 };
@@ -26,7 +26,7 @@ const Items = {
   },
   animate: {
     y: 0,
-    opacity: 100,
+    opacity: 1,
   },
 };
 
