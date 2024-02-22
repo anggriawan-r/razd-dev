@@ -46,13 +46,13 @@ export default function Preloader({ setShowPreloader }: PreloaderType) {
         onAnimationComplete={() => setShowPreloader(false)}
       >
         {loaderText.map((text) => (
-          <motion.h1
+          <motion.div
             key={text}
             variants={Items}
             className="text-2xl font-bold text-zinc-200"
           >
             {text}
-          </motion.h1>
+          </motion.div>
         ))}
       </motion.div>
     </div>
