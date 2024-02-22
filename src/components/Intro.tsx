@@ -3,6 +3,7 @@ import { AppDispatch } from "@/store/store";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDispatch } from "react-redux";
 import MouseAnimation from "./MouseAnimation";
+import IntroGrid from "./IntroGrid";
 
 function Intro() {
   const dispatch = useDispatch<AppDispatch>();
@@ -33,33 +34,7 @@ function Intro() {
             >
               RAYZADMIKO
             </motion.h1>
-            <motion.hr
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
-              transition={{
-                duration: 1,
-                ease: "circInOut",
-              }}
-              className="col-start-2 col-end-5 row-start-2 border-dashed border-zinc-200/50"
-            />
-            <motion.hr
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
-              transition={{
-                duration: 1,
-                ease: "circInOut",
-              }}
-              className="col-start-1 col-end-4 row-start-4 border-dashed border-zinc-200/50"
-            />
-            <motion.div
-              initial={{ height: 0 }}
-              animate={{ height: "100%" }}
-              transition={{
-                duration: 1,
-                ease: "circInOut",
-              }}
-              className="col-start-4 row-start-1 row-end-5 border-l border-dashed border-zinc-200/50"
-            />
+            <IntroGrid />
           </div>
           <motion.a
             href="#about"

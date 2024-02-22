@@ -8,33 +8,29 @@ const loaderText = ["Eat.", "Sleep.", "Code."];
 
 const Container = {
   animate: {
-    opacity: 100,
     transition: {
-      ease: "easeOut",
-      staggerChildren: 0.25,
+      staggerChildren: 0.2,
     },
   },
   exit: {
     transition: {
-      opacity: 0,
-      delayChildren: 1,
+      delayChildren: 0.75,
     },
   },
 };
 
 const Items = {
   initial: {
-    y: 0,
+    y: 25,
     opacity: 0,
   },
   animate: {
-    duration: 3,
     opacity: 100,
-    y: -25,
+    y: 0,
   },
   exit: {
     opacity: 0,
-    y: 0,
+    y: 25,
   },
 };
 

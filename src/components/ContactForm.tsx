@@ -1,19 +1,15 @@
-import { formSchema } from "@/utils/validateForm";
+import { formSchema } from "@/lib/validateForm";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "./ui/form";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { Button } from "./ui/button";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/store/store";
-import { squareHovered } from "@/store/hover/hoverSlice";
-import { FaPaperPlane } from "react-icons/fa6";
+import { sendEmail } from "@/actions/sendEmail";
+import { toast } from "sonner";
+import SubmitButton from "./SubmitButton";
 
 function ContactForm() {
-  const dispatch = useDispatch<AppDispatch>();
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -22,8 +18,13 @@ function ContactForm() {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const { error } = await sendEmail(values);
+    if (error) {
+      toast.error("Something went wrong!");
+      return;
+    }
+    toast.success("Message has been sent successfully!");
   };
 
   return (
@@ -42,7 +43,7 @@ function ContactForm() {
                   type="email"
                   placeholder="Email"
                   {...field}
-                  className="bg-zinc-300 text-zinc-900 transition-colors placeholder:text-zinc-700 focus:bg-zinc-200"
+                  className="bg-zinc-300 text-zinc-900 transition-colors placeholder:text-zinc-500 focus:bg-zinc-200"
                 />
               </FormControl>
               <FormMessage />
@@ -58,23 +59,14 @@ function ContactForm() {
                 <Textarea
                   placeholder="Body"
                   {...field}
-                  className="h-44 bg-zinc-300 text-zinc-900 transition-colors placeholder:text-zinc-700 focus:bg-zinc-200"
+                  className="h-44 bg-zinc-300 text-zinc-900 transition-colors placeholder:text-zinc-500 focus:bg-zinc-200"
                 />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button
-          variant="outline"
-          type="submit"
-          className="group flex w-[100px] items-center justify-center gap-2 self-center border-none font-semibold"
-          onMouseEnter={(e) => dispatch(squareHovered(e.currentTarget))}
-          onMouseLeave={() => dispatch(squareHovered(null))}
-        >
-          Send
-          <FaPaperPlane className="transition-transform duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-1" />
-        </Button>
+        <SubmitButton isSubmitting={form.formState.isSubmitting.valueOf()} />
       </form>
     </Form>
   );

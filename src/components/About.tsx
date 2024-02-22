@@ -6,29 +6,91 @@ import { HiDownload } from "react-icons/hi";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store/store";
 import { squareHovered } from "@/store/hover/hoverSlice";
+import { useInView, motion, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 function About() {
   const dispatch = useDispatch<AppDispatch>();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.35 });
+  const controller = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controller.start("visible");
+    }
+  }, [isInView, controller]);
+
+  const showVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        delay: 0.25,
+        ease: "easeOut",
+        delayChildren: 0.25,
+        staggerChildren: 0.25,
+      },
+    },
+  };
+
+  const containerVariants = {
+    visible: {
+      transition: {
+        delayChildren: 0.25,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { ease: "easeOut", duration: 1 } },
+  };
 
   return (
     <section
+      ref={ref}
       id="about"
       className="container flex h-screen max-w-screen-lg flex-col items-center justify-center gap-16 px-4"
     >
-      <h1 className="text-3xl font-extrabold text-zinc-200 md:text-7xl">
+      <motion.h1
+        className="text-3xl font-extrabold text-zinc-200 md:text-7xl"
+        variants={showVariants}
+        initial="hidden"
+        animate={controller}
+        transition={{ duration: 1, delay: 0.25, ease: "easeOut" }}
+      >
         ABOUT ME
-      </h1>
+      </motion.h1>
       <div className="flex flex-col justify-center gap-16 sm:flex-row">
         <div className="flex w-full flex-col gap-8 sm:w-2/3">
-          <p className="text-center text-base font-medium leading-relaxed text-zinc-200 sm:text-left sm:text-xl">
+          <motion.p
+            className="text-center text-base font-medium leading-relaxed text-zinc-200 sm:text-left sm:text-xl"
+            variants={showVariants}
+            initial="hidden"
+            animate={controller}
+            transition={{ duration: 1, delay: 0.25, ease: "easeOut" }}
+          >
             Hello! I&apos;m Anggriawan who enjoys building websites and
             discovering new front-end perspectives. I develop websites and web
             apps with dynamic animation, responsiveness, pixel-perfect and
             satisfying looks.
-          </p>
+          </motion.p>
           <div className="flex items-center justify-between gap-8 sm:justify-start">
-            <div className="flex gap-2">
-              <a href="https://github.com/anggriawan-r" target="_blank">
+            <motion.div
+              className="flex gap-2"
+              variants={containerVariants}
+              initial="hidden"
+              animate={controller}
+            >
+              <motion.a
+                variants={itemVariants}
+                href="https://github.com/anggriawan-r"
+                target="_blank"
+              >
                 <Button
                   variant="outline"
                   size="icon"
@@ -38,8 +100,12 @@ function About() {
                 >
                   <FaGithub className="h-10 w-10" />
                 </Button>
-              </a>
-              <a href="https://linkedin.com/in/anggriawanr" target="_blank">
+              </motion.a>
+              <motion.a
+                variants={itemVariants}
+                href="https://linkedin.com/in/anggriawanr"
+                target="_blank"
+              >
                 <Button
                   variant="outline"
                   size="icon"
@@ -49,8 +115,12 @@ function About() {
                 >
                   <FaLinkedin className="h-10 w-10" />
                 </Button>
-              </a>
-              <a href="mailto:anggriawan.net@gmail.com" target="_blank">
+              </motion.a>
+              <motion.a
+                variants={itemVariants}
+                href="mailto:anggriawan.net@gmail.com"
+                target="_blank"
+              >
                 <Button
                   variant="outline"
                   size="icon"
@@ -60,9 +130,17 @@ function About() {
                 >
                   <BiSolidEnvelope className="h-10 w-10" />
                 </Button>
-              </a>
-            </div>
-            <a href="/CV.pdf" target="_blank">
+              </motion.a>
+            </motion.div>
+
+            <motion.a
+              variants={showVariants}
+              initial="hidden"
+              animate={controller}
+              transition={{ duration: 1, delay: 0.25, ease: "easeOut" }}
+              href="/CV.pdf"
+              target="_blank"
+            >
               <Button
                 variant="outline"
                 size="icon"
@@ -73,17 +151,23 @@ function About() {
                 Download CV
                 <HiDownload />
               </Button>
-            </a>
+            </motion.a>
           </div>
         </div>
-        <div className="relative -z-10 h-72 w-full overflow-hidden rounded-lg bg-zinc-200 sm:w-1/2">
+        <motion.div
+          className="relative -z-10 h-72 w-full overflow-hidden rounded-lg bg-zinc-200 sm:w-1/2"
+          variants={showVariants}
+          initial="hidden"
+          animate={controller}
+          transition={{ duration: 1, delay: 0.25, ease: "easeOut" }}
+        >
           <Image
             src="/profile.jpg"
             alt="my photo profile"
             fill
             className="absolute object-cover"
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
