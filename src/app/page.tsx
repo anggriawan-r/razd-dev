@@ -11,18 +11,16 @@ export default function Home() {
   const [showPreloader, setShowPreloader] = useState(true);
 
   return (
-    <>
-      <AnimatePresence mode="wait">
-        {showPreloader ? (
-          <Preloader key="first" setShowPreloader={setShowPreloader} />
-        ) : (
-          <>
-            <Header key="second" />
-            <MainContent key="third" />
-            <Footer />
-          </>
-        )}
-      </AnimatePresence>
-    </>
+    <AnimatePresence mode="wait">
+      {showPreloader ? (
+        <Preloader key="first" setShowPreloader={setShowPreloader} />
+      ) : (
+        <>
+          <Header key="second" />
+          <MainContent key="third" />
+          <Footer key="fourth" />
+        </>
+      )}
+    </AnimatePresence>
   );
 }

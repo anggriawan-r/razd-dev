@@ -7,13 +7,12 @@ type PreloaderType = {
 const loaderText = ["Eat.", "Sleep.", "Code."];
 
 const Container = {
-  initial: {},
   animate: {
     transition: {
       staggerChildren: 0.2,
     },
   },
-  exit: {
+  initial: {
     transition: {
       delayChildren: 0.75,
     },
@@ -29,10 +28,6 @@ const Items = {
     y: 0,
     opacity: 100,
   },
-  exit: {
-    y: 25,
-    opacity: 0,
-  },
 };
 
 export default function Preloader({ setShowPreloader }: PreloaderType) {
@@ -43,7 +38,7 @@ export default function Preloader({ setShowPreloader }: PreloaderType) {
         variants={Container}
         initial="initial"
         animate="animate"
-        exit="exit"
+        exit="initial"
         onAnimationComplete={() => setShowPreloader(false)}
       >
         {loaderText.map((text) => (
