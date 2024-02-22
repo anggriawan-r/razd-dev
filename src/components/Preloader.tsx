@@ -7,6 +7,7 @@ type PreloaderType = {
 const loaderText = ["Eat.", "Sleep.", "Code."];
 
 const Container = {
+  initial: {},
   animate: {
     transition: {
       staggerChildren: 0.2,
@@ -36,7 +37,7 @@ const Items = {
 
 export default function Preloader({ setShowPreloader }: PreloaderType) {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-900">
+    <div className="flex h-svh items-center justify-center bg-zinc-900">
       <motion.div
         className="flex w-full items-center justify-center gap-4"
         variants={Container}

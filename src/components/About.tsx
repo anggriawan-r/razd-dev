@@ -27,11 +27,9 @@ function About() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 1,
-        delay: 0.25,
         ease: "easeOut",
-        delayChildren: 0.25,
-        staggerChildren: 0.25,
+        duration: 0.5,
+        delay: 0.5,
       },
     },
   };
@@ -39,8 +37,8 @@ function About() {
   const containerVariants = {
     visible: {
       transition: {
-        delayChildren: 0.25,
-        staggerChildren: 0.1,
+        delayChildren: 0.5,
+        staggerChildren: 0.25,
       },
     },
   };
@@ -61,7 +59,6 @@ function About() {
         variants={showVariants}
         initial="hidden"
         animate={controller}
-        transition={{ duration: 1, delay: 0.25, ease: "easeOut" }}
       >
         ABOUT ME
       </motion.h1>
@@ -72,7 +69,6 @@ function About() {
             variants={showVariants}
             initial="hidden"
             animate={controller}
-            transition={{ duration: 1, delay: 0.25, ease: "easeOut" }}
           >
             Hello! I&apos;m Anggriawan who enjoys building websites and
             discovering new front-end perspectives. I develop websites and web
@@ -159,7 +155,9 @@ function About() {
           variants={showVariants}
           initial="hidden"
           animate={controller}
-          transition={{ duration: 1, delay: 0.25, ease: "easeOut" }}
+          transition={{
+            delay: 2,
+          }}
         >
           <Image
             src="/profile.jpg"
