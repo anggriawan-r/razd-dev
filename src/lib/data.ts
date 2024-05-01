@@ -111,7 +111,7 @@ export const skills = [
 
 export const projects = [
   {
-    title: "blogin",
+    title: "Blogin",
     description:
       "A blog web app. Users can post blogs here and share them across the world. This blog is What You See Is What You Get kind of blogs.",
     image: "/projects/blogin.jpg",
@@ -123,5 +123,21 @@ export const projects = [
       "/skills/firebase.svg",
       "/skills/prisma.svg",
     ],
+    repo: "https://github.com/anggriawan-r/blogin",
+    web: "https://razd-dev.vercel.app",
+  },
+  {
+    title: "Adadeh",
+    description:
+      "Footwear e-commerce website with midtrans integration as payment gateway. User can login and buy our footwear products.",
+    image: "/projects/adadeh.jpg",
+    tech: [
+      "/skills/next.svg",
+      "/skills/laravel.svg",
+      "/skills/typescript.svg",
+      "/skills/tailwind.svg",
+    ],
+    repo: "https://github.com/Adadeh-Commerce/adadeh",
+    web: "https://adadeh-indonesia.vercel.app",
   },
 ] as const;

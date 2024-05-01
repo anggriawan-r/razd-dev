@@ -19,11 +19,12 @@ function Projects() {
       <h1 className="text-3xl font-extrabold text-zinc-200 md:text-7xl">
         PROJECTS
       </h1>
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+
+      <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-8">
         {projects.map((project) => (
           <div
             key={project.title}
-            className="flex h-auto w-full flex-col items-center justify-center gap-6"
+            className="flex h-full w-full flex-col items-center gap-6"
           >
             <div className="overflow-hidden rounded-md">
               <Image
@@ -35,7 +36,9 @@ function Projects() {
               />
             </div>
             <div className="flex w-full items-center justify-between">
-              <h2 className="text-3xl font-bold text-zinc-200">Blogin</h2>
+              <h2 className="text-3xl font-bold text-zinc-200">
+                {project.title}
+              </h2>
               <div className="flex gap-2">
                 {project.tech.map((tech) => (
                   <Image
@@ -58,10 +61,7 @@ function Projects() {
                 onMouseEnter={(e) => dispatch(squareHovered(e.currentTarget))}
                 onMouseLeave={() => dispatch(squareHovered(null))}
               >
-                <Link
-                  href="https://github.com/anggriawan-r/blogin"
-                  target="_blank"
-                >
+                <Link href={project.repo} target="_blank">
                   <FaGithub className="h-6 w-6" />
                   Visit Repository
                 </Link>
@@ -74,7 +74,7 @@ function Projects() {
                 onMouseEnter={(e) => dispatch(squareHovered(e.currentTarget))}
                 onMouseLeave={() => dispatch(squareHovered(null))}
               >
-                <Link href="https://blogin-razd.vercel.app" target="_blank">
+                <Link href={project.web} target="_blank">
                   <BiLink className="h-6 w-6" />
                   Visit Website
                 </Link>
