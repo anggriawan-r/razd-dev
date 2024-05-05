@@ -124,7 +124,7 @@ export const projects = [
       "/skills/prisma.svg",
     ],
     repo: "https://github.com/anggriawan-r/blogin",
-    web: "https://razd-dev.vercel.app",
+    web: "https://blogin-razd.vercel.app",
   },
   {
     title: "Adadeh",
