@@ -137,7 +137,7 @@ export const projects = [
       "/skills/typescript.svg",
       "/skills/tailwind.svg",
     ],
-    repo: "https://github.com/Adadeh-Commerce/adadeh",
-    web: "https://adadeh-indonesia.vercel.app",
+    repo: "https://github.com/anggriawan-r/adadeh-indonesia",
+    web: "https://adadeh-indonesia-fe.vercel.app",
   },
 ] as const;
