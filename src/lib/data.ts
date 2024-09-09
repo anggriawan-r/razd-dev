@@ -68,11 +68,6 @@ export const skills = [
     link: "https://tailwindcss.com/",
   },
   {
-    name: "Prisma",
-    image: "/skills/prisma.svg",
-    link: "https://www.prisma.io/",
-  },
-  {
     name: "MongoDB",
     image: "/skills/mongodb.svg",
     link: "https://www.mongodb.com/",
@@ -93,11 +88,6 @@ export const skills = [
     link: "https://www.python.org/",
   },
   {
-    name: "shadcn/ui",
-    image: "/skills/shadcn.svg",
-    link: "https://ui.shadcn.com/",
-  },
-  {
     name: "Git",
     image: "/skills/git.svg",
     link: "https://git-scm.com/",
@@ -107,13 +97,28 @@ export const skills = [
     image: "/skills/github.svg",
     link: "https://github.com/",
   },
+  {
+    name: "Flutter",
+    image: "/skills/flutter.svg",
+    link: "https://flutter.dev/",
+  },
+  {
+    name: "PostgreSQL",
+    image: "/skills/postgresql.svg",
+    link: "https://www.postgresql.org/",
+  },
+  {
+    name: "Linux",
+    image: "/skills/linux.svg",
+    link: "https://www.linux.org/",
+  },
 ];
 
 export const projects = [
   {
     title: "Blogin",
     description:
-      "A blog web app. Users can post blogs here and share them across the world. This blog is What You See Is What You Get kind of blogs.",
+      "A dynamic blog platform that allows users to create and share content globally. The app features a WYSIWYG (What You See Is What You Get) editor, enabling users to effortlessly format their posts with ease, ensuring the final output matches their design.",
     image: "/projects/blogin.jpg",
     tech: [
       "/skills/typescript.svg",
@@ -129,7 +134,7 @@ export const projects = [
   {
     title: "Adadeh",
     description:
-      "Footwear e-commerce website with midtrans integration as payment gateway. User can login and buy our footwear products.",
+      "An e-commerce platform for footwear products, featuring a user-friendly interface for browsing, filtering, and purchasing items. Users can log in, add products to their cart, and securely complete transactions through Midtrans integration as the payment gateway.",
     image: "/projects/adadeh.jpg",
     tech: [
       "/skills/next.svg",

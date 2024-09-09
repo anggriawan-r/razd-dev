@@ -1,12 +1,12 @@
-import Image from "next/image";
+import { AppDispatch } from "@/store/store";
+import { BiLink } from "react-icons/bi";
 import { Button } from "./ui/button";
 import { FaGithub } from "react-icons/fa6";
-import { BiLink } from "react-icons/bi";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/store/store";
-import { squareHovered } from "@/store/hover/hoverSlice";
-import { projects } from "@/lib/data";
+import Image from "next/image";
 import Link from "next/link";
+import { projects } from "@/lib/data";
+import { squareHovered } from "@/store/hover/hoverSlice";
+import { useDispatch } from "react-redux";
 
 function Projects() {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,15 +24,15 @@ function Projects() {
         {projects.map((project) => (
           <div
             key={project.title}
-            className="flex h-full w-full flex-col items-center gap-6"
+            className="flex h-full w-full flex-col gap-8 md:row-[1/5] md:grid md:grid-rows-subgrid"
           >
-            <div className="overflow-hidden rounded-md">
+            <div className="h-72 w-full overflow-hidden rounded-md">
               <Image
                 src={project.image}
                 alt={project.title}
                 width={1200}
                 height={600}
-                className="w-full rounded-md object-cover transition duration-500 ease-out hover:scale-110"
+                className="h-full w-full object-cover transition duration-500 ease-out hover:scale-110"
               />
             </div>
             <div className="flex w-full items-center justify-between">

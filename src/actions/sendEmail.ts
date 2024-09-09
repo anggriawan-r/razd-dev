@@ -1,10 +1,10 @@
 "use server";
 
-import nodemailer from "nodemailer";
-import { z } from "zod";
-import { render } from "@react-email/render";
-import { formSchema } from "@/lib/validateForm";
 import { Email } from "@/email/Email";
+import { formSchema } from "@/lib/validateForm";
+import nodemailer from "nodemailer";
+import { render } from "@react-email/render";
+import { z } from "zod";
 
 export const sendEmail = async (values: z.infer<typeof formSchema>) => {
   const { email, body } = values;

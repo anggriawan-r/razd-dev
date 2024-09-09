@@ -1,13 +1,14 @@
-import Image from "next/image";
-import { Button } from "./ui/button";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
-import { BiSolidEnvelope } from "react-icons/bi";
-import { HiDownload } from "react-icons/hi";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/store/store";
-import { squareHovered } from "@/store/hover/hoverSlice";
-import { useInView, motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
+
+import { AppDispatch } from "@/store/store";
+import { Button } from "./ui/button";
+import { HiDownload } from "react-icons/hi";
+import Image from "next/image";
+import { IoMail } from "react-icons/io5";
+import { squareHovered } from "@/store/hover/hoverSlice";
+import { useDispatch } from "react-redux";
 
 function About() {
   const dispatch = useDispatch<AppDispatch>();
@@ -70,10 +71,11 @@ function About() {
             initial="hidden"
             animate={controller}
           >
-            Hello! I&apos;m Anggriawan who enjoys building websites and
-            discovering new front-end perspectives. I develop websites and web
-            apps with dynamic animation, responsiveness, pixel-perfect and
-            satisfying looks.
+            Hello! I&apos;m Anggriawan, a passionate Full Stack Web and Mobile
+            App Developer who loves crafting dynamic, responsive, and visually
+            appealing applications. I enjoy building both websites and mobile
+            apps with seamless animations, pixel-perfect designs, and a focus on
+            delivering satisfying user experiences.
           </motion.p>
           <div className="flex items-center justify-between gap-8 sm:justify-start">
             <motion.div
@@ -124,7 +126,7 @@ function About() {
                   onMouseEnter={(e) => dispatch(squareHovered(e.currentTarget))}
                   onMouseLeave={() => dispatch(squareHovered(null))}
                 >
-                  <BiSolidEnvelope className="h-10 w-10" />
+                  <IoMail className="h-10 w-10" />
                 </Button>
               </motion.a>
             </motion.div>
